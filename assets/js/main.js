@@ -1,6 +1,15 @@
 document.addEventListener("DOMContentLoaded", function () {
   var toggle = document.querySelector(".nav-toggle");
   var nav = document.querySelector(".main-nav");
+  var header = document.querySelector(".site-header");
+
+  function syncNavOffset() {
+    if (header && nav) {
+      nav.style.top = header.getBoundingClientRect().height + "px";
+    }
+  }
+  syncNavOffset();
+  window.addEventListener("resize", syncNavOffset);
 
   if (toggle && nav) {
     toggle.addEventListener("click", function () {
