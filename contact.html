@@ -115,6 +115,46 @@
   </section>
 
   <section class="section section--alt">
+    <div class="container">
+      <div class="contact-form-wrap">
+        <span class="eyebrow">Send an Inquiry</span>
+        <h2>Or Fill Out the Form Below</h2>
+        <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="contact-form">
+          <input type="hidden" name="form-name" value="contact">
+          <p class="hidden-field"><label>Don't fill this out: <input name="bot-field"></label></p>
+
+          <div class="form-row">
+            <label for="cf-name">Full Name</label>
+            <input type="text" id="cf-name" name="name" required>
+          </div>
+          <div class="form-row">
+            <label for="cf-email">Email Address</label>
+            <input type="email" id="cf-email" name="email" required>
+          </div>
+          <div class="form-row">
+            <label for="cf-subject">Area of Interest</label>
+            <select id="cf-subject" name="subject">
+              <option value="Agriculture Trade">Agriculture Trade</option>
+              <option value="Mining Operations">Mining Operations</option>
+              <option value="Defense Solutions">Defense Solutions</option>
+              <option value="General Inquiry">General Inquiry</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label for="cf-message">Message</label>
+            <textarea id="cf-message" name="message" rows="5" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">
+            Submit Inquiry
+            <svg class="icon" viewBox="0 0 24 24"><line x1="21" y1="3" x2="10" y2="14"/><polygon points="21 3 14 21 10 14 3 10"/></svg>
+          </button>
+          <p class="form-status" id="form-status" role="status" hidden></p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt">
     <div class="container split">
       <div class="split-media">
         <picture>

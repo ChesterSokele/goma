@@ -31,4 +31,30 @@ document.addEventListener("DOMContentLoaded", function () {
   if (yearEl) {
     yearEl.textContent = new Date().getFullYear();
   }
+
+  var contactForm = document.getElementById("contact-form");
+  var formStatus = document.getElementById("form-status");
+  if (contactForm && formStatus) {
+    contactForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var data = new FormData(contactForm);
+      fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams(data).toString()
+      })
+        .then(function (response) {
+          if (!response.ok) throw new Error("Submission failed");
+          contactForm.reset();
+          formStatus.textContent = "Thank you — your message has been sent. We'll be in touch shortly.";
+          formStatus.className = "form-status is-success";
+          formStatus.hidden = false;
+        })
+        .catch(function () {
+          formStatus.textContent = "Something went wrong sending your message. Please try again or email us directly.";
+          formStatus.className = "form-status is-error";
+          formStatus.hidden = false;
+        });
+    });
+  }
 });
